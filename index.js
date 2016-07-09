@@ -3,6 +3,7 @@ exports = module.exports = function httpRouting(id) {
     'router': './xom/router',
     'routing/forwarding': './xom/routing/forwarding',
     'routing/table': './xom/routing/table',
+    'routing/topology/backend/instances': './xom/routing/topology/backend/instances',
     'routing/topology/backend/hosts': './xom/routing/topology/backend/hosts',
     'routing/topology/backend/services': './xom/routing/topology/backend/services'
   };
@@ -20,6 +21,7 @@ exports.used = function(container) {
   container.add('routing/table');
   container.add('routing/topology/backend/hosts');
   container.add('routing/topology/backend/services');
+  container.add('routing/topology/backend/instances');
   
   // TODO: Only add this is another implementation isn't available.
   container.add('routing/forwarding');
