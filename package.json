@@ -1,7 +1,7 @@
 {
   "name": "nodex-http-routing",
   "version": "0.0.0",
-  "description": "HTTP routing components for the Bixby framework.",
+  "description": "HTTP routing components for Bixby.js.",
   "keywords": [
     "http"
   ],
