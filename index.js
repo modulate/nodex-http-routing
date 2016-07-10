@@ -4,8 +4,8 @@ exports = module.exports = function httpRouting(id) {
     'routing/forwarding': './xom/routing/forwarding',
     'routing/table': './xom/routing/table',
     'routing/topology/backend/instances': './xom/routing/topology/backend/instances',
-    'routing/topology/backend/hosts': './xom/routing/topology/backend/hosts',
-    'routing/topology/backend/services': './xom/routing/topology/backend/services'
+    'routing/topology/backend/services': './xom/routing/topology/backend/services',
+    'routing/topology/backend/urls': './xom/routing/topology/backend/urls'
   };
   
   var mid = map[id];
@@ -19,7 +19,7 @@ exports.used = function(container) {
   
   // TODO: Only add this is another implementation isn't available.
   container.add('routing/table');
-  container.add('routing/topology/backend/hosts');
+  container.add('routing/topology/backend/urls');
   container.add('routing/topology/backend/services');
   container.add('routing/topology/backend/instances');
   
