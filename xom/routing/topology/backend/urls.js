@@ -1,8 +1,8 @@
 exports = module.exports = function() {
-  var URLsTable = require('../../../../lib/table/urls');
+  var URLsMap = require('../../../../lib/table/urls');
   
-  return new URLsTable();
+  return new URLsMap();
 }
 
 exports['@singleton'] = true;
-exports['@implements'] = 'http://schemas.modulate.io/js/http/routing/topology/backend/URLsTable';
+exports['@implements'] = 'http://schemas.modulate.io/js/http/routing/topology/backend/URLsMap';
