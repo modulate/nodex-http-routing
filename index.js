@@ -1,3 +1,21 @@
+exports = module.exports = {
+  'router': require('./xom/router'),
+};
+
+exports.load = function(id) {
+  try {
+    return require('./' + id);
+  } catch (ex) {
+    if (ex.code == 'MODULE_NOT_FOUND') { return; }
+    throw ex;
+  }
+};
+
+
+
+return;
+// TODO: Remove the below lines
+
 exports = module.exports = function httpRouting(id) {
   var map = {
     'router': './xom/router',
@@ -14,6 +32,7 @@ exports = module.exports = function httpRouting(id) {
   }
 };
 
+/*
 exports.used = function(container) {
   container.add('router');
   
@@ -26,3 +45,4 @@ exports.used = function(container) {
   // TODO: Only add this is another implementation isn't available.
   container.add('routing/forwarding');
 };
+*/
