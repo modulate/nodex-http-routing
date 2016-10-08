@@ -7,9 +7,6 @@ exports = module.exports = {
   // TODO: Review below this line
   'routing/forwarding': require('./xom/routing/forwarding'),
   'routing/table': require('./xom/routing/table'),
-  'routing/topology/backend/urls': require('./xom/routing/topology/backend/urls'),
-  'routing/topology/backend/services': require('./xom/routing/topology/backend/services'),
-  'routing/topology/backend/instances': require('./xom/routing/topology/backend/instances'),
 };
 
 exports.load = function(id) {
