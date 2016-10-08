@@ -1,49 +1,34 @@
 exports = module.exports = function(urlMap, NS, Stream) {
   var uri = require('url');
   
-  
-  urlMap.set('/', 'www.google.com', '1goog', function(){});
-  
-  //updater.set('1goog', 'SRV')
-  
-  NS.add('_http._tcp.1goog.', 'SRV', { name: 'si123', port: 80, priority: 10, weight: 10 }, function(){});
-  
-  
   return function(req, res, callback) {
-    
-    
     var hp = req.headers.host.split(':');
     var hostname = hp[0];
     var port = hp[1] || 80;
-    
-    console.log('BACKEND ROUTE!');
-    console.log(hostname);
-    console.log(req.url);
-    
-    
     var url = uri.parse(req.url);
     
     urlMap.get(url.pathname, hostname, function(err, service) {
-      console.log(err);
-      console.log(service);
+      // TODO: error handling
       
       NS.resolve('_http._tcp.' + service + '.', 'SRV', function(err, records) {
-        console.log('RESOLVED SERVICE');
-        console.log(err);
-        console.log(records);
+        // TODO: error handling
         
-      });
+        var record = records[0];
+        
+        NS.resolve(record.name, 'A', function(err, records) {
+          // TODO: error handling
+        
+          var ip = records[0];
       
-    });
-    
-    
-    /*
-    NS.resolve('_http._tcp.' + hostname, 'SRV', function(err, records) {
-      console.log(err);
-      console.log(records);
+          var dst = Stream.create({ hostname: ip, port: record.port });
+          //console.log(dst);
       
-    });
-    */
+          var src = req.connection.__through;
+          src.pipe(dst).pipe(req.connection);
+        
+        }); // A records
+      }); // SRV records
+    }); // URL map
   };
 };
 
