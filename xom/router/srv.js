@@ -10,12 +10,20 @@ exports = module.exports = function(DNS, Stream) {
     var hostname = hp[0];
     var port = hp[1] || 80;
     
-    console.log(hostname);
+    console.log('SRV RECORD RESOLVE!');
+    console.log(hostname)
+    // TODO: Append '.' to hostname
     
-    DNS.resolve(hostname, 'A', function(err, records) {
-      var ip = records[0];
+    //DNS.resolve('_xmpp-client._tcp.' + hostname, 'SRV', function(err, records) {
+    DNS.resolve('_http._tcp.pkg.pfsense.org.', 'SRV', function(err, records) {
+      console.log(err);
+      console.log(records);
       
-      var dst = Stream.create({ hostname: ip, port: port });
+      var rec = records[0];
+      
+      // NOTE: `connect` will do a further `A` or `AAAA` lookup, to resolve the hostname
+      // to an IP address
+      var dst = Stream.create({ hostname: rec.name, port: rec.port });
       //console.log(dst);
       
       var src = req.connection.__through;

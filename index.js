@@ -1,6 +1,7 @@
 exports = module.exports = {
   'router': require('./xom/router'),
   'router/ipv4': require('./xom/router/ipv4'),
+  'router/srv': require('./xom/router/srv'),
   // TODO: Review below this line
   'routing/forwarding': require('./xom/routing/forwarding'),
   'routing/table': require('./xom/routing/table'),
