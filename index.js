@@ -2,7 +2,7 @@ exports = module.exports = {
   'router': require('./xom/router'),
   'router/ipv4': require('./xom/router/ipv4'),
   'router/srv': require('./xom/router/srv'),
-  'router/backend': require('./xom/router/backend'),
+  'topology/backend/router': require('./xom/topology/backend/router'),
   'topology/backend/urlmap': require('./xom/topology/backend/urlmap'),
   // TODO: Review below this line
   'routing/forwarding': require('./xom/routing/forwarding'),
