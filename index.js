@@ -1,5 +1,12 @@
 exports = module.exports = {
   'router': require('./xom/router'),
+  'router/ipv4': require('./xom/router/ipv4'),
+  // TODO: Review below this line
+  'routing/forwarding': require('./xom/routing/forwarding'),
+  'routing/table': require('./xom/routing/table'),
+  'routing/topology/backend/urls': require('./xom/routing/topology/backend/urls'),
+  'routing/topology/backend/services': require('./xom/routing/topology/backend/services'),
+  'routing/topology/backend/instances': require('./xom/routing/topology/backend/instances'),
 };
 
 exports.load = function(id) {
